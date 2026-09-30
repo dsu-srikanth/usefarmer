@@ -1,0 +1,213 @@
+
+import { useState } from "react";
+
+function Crops() {
+
+    const [name, setName] = useState("");
+    const [season, setSeason] = useState("");
+    const [soilType, setSoilType] = useState("");
+    const [duration, setDuration] = useState("");
+    const [waterRequirement, setWaterRequirement] = useState("");
+
+    function submitCrops(e) {
+
+        e.preventDefault();
+
+        alert("🌱 Crop added successfully!");
+
+        console.log("Crop Name:", name);
+        console.log("Season:", season);
+        console.log("Soil Type:", soilType);
+        console.log("Duration:", duration);
+        console.log("Water Requirement:", waterRequirement);
+
+        // Clear form
+        setName("");
+        setSeason("");
+        setSoilType("");
+        setDuration("");
+        setWaterRequirement("");
+    }
+
+    return (
+        <div className="crop-form">
+
+            {/* Form Title */}
+            <div className="form-title">
+
+                <div className="form-title-icon">
+                    🌱
+                </div>
+
+                <div>
+                    <h2>Crop Details</h2>
+
+                    <p>
+                        Enter the details of your crop
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form onSubmit={submitCrops}>
+
+                {/* Crop Name */}
+                <div className="form-group">
+
+                    <label>
+                        🌾 Crop Name
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="Enter crop name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+
+                </div>
+
+
+                {/* Season */}
+                <div className="form-group">
+
+                    <label>
+                        ☀️ Season
+                    </label>
+
+                    <select
+                        value={season}
+                        onChange={(e) => setSeason(e.target.value)}
+                        required
+                    >
+                        <option value="">
+                            Select season
+                        </option>
+
+                        <option value="Kharif">
+                            Kharif
+                        </option>
+
+                        <option value="Rabi">
+                            Rabi
+                        </option>
+
+                        <option value="Zaid">
+                            Zaid
+                        </option>
+                    </select>
+
+                </div>
+
+
+                {/* Soil Type */}
+                <div className="form-group">
+
+                    <label>
+                        🌍 Soil Type
+                    </label>
+
+                    <select
+                        value={soilType}
+                        onChange={(e) => setSoilType(e.target.value)}
+                        required
+                    >
+                        <option value="">
+                            Select soil type
+                        </option>
+
+                        <option value="Black Soil">
+                            Black Soil
+                        </option>
+
+                        <option value="Red Soil">
+                            Red Soil
+                        </option>
+
+                        <option value="Alluvial Soil">
+                            Alluvial Soil
+                        </option>
+
+                        <option value="Clay Soil">
+                            Clay Soil
+                        </option>
+
+                        <option value="Sandy Soil">
+                            Sandy Soil
+                        </option>
+                    </select>
+
+                </div>
+
+
+                {/* Duration */}
+                <div className="form-group">
+
+                    <label>
+                        📅 Duration
+                    </label>
+
+                    <input
+                        type="number"
+                        placeholder="Enter duration in days"
+                        value={duration}
+                        onChange={(e) => setDuration(e.target.value)}
+                        min="1"
+                        required
+                    />
+
+                </div>
+
+
+                {/* Water Requirement */}
+                <div className="form-group">
+
+                    <label>
+                        💧 Water Requirement
+                    </label>
+
+                    <select
+                        value={waterRequirement}
+                        onChange={(e) =>
+                            setWaterRequirement(e.target.value)
+                        }
+                        required
+                    >
+                        <option value="">
+                            Select water requirement
+                        </option>
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                        <option value="Medium">
+                            Medium
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+                    </select>
+
+                </div>
+
+
+                {/* Submit Button */}
+                <button
+                    type="submit"
+                    className="add-crop-button"
+                >
+                    🌱 Add Crop
+                </button>
+
+            </form>
+
+        </div>
+    );
+}
+
+export default Crops;
+

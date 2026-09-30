@@ -142,6 +142,23 @@ def crops():
                 "error": str(e)
             }), 500
 
+@app.route("/expenses",methods=["Get"])
+def show-expenses():
+    cursor=db.cursor()
+    cursor.execute("select * from expenses")
+    cursor.close()
+    rows = cursor.fetchall()
+    for expense in rows:
+        rows.append({
+            farmer_id:row[0],
+            crop_id:row[1],
+            expense_catagory:row[2],
+            amount:row[3],
+            expense_date:row[4],
+            description:row[5]
+
+        })
+    return jsonify;
 
 # ==========================================
 # RUN FLASK
